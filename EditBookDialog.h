@@ -1,0 +1,91 @@
+///-----------------------------------------------------------------
+///
+/// @file      EditBookDialog.h
+/// @author    coderuth
+/// Created:   5/13/2018 9:33:38 AM
+/// @section   DESCRIPTION
+///            EditBookDialog class declaration
+///
+///------------------------------------------------------------------
+
+#ifndef __EDITBOOKDIALOG_H__
+#define __EDITBOOKDIALOG_H__
+
+#ifdef __BORLANDC__
+	#pragma hdrstop
+#endif
+
+#ifndef WX_PRECOMP
+	#include <wx/wx.h>
+	#include <wx/dialog.h>
+#else
+	#include <wx/wxprec.h>
+#endif
+
+//Do not add custom headers between 
+//Header Include Start and Header Include End.
+//wxDev-C++ designer will remove them. Add custom headers after the block.
+////Header Include Start
+#include <wx/grid.h>
+#include <wx/button.h>
+#include <wx/textctrl.h>
+#include <wx/stattext.h>
+#include <wx/statbox.h>
+////Header Include End
+
+////Dialog Style Start
+#undef EditBookDialog_STYLE
+#define EditBookDialog_STYLE wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX
+////Dialog Style End
+
+class EditBookDialog : public wxDialog
+{
+	private:
+		DECLARE_EVENT_TABLE();
+		
+	public:
+		EditBookDialog(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("EditBookDialog"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = EditBookDialog_STYLE);
+		virtual ~EditBookDialog();
+		void searchButtonClick(wxCommandEvent& event);
+		void cancelButtonClick(wxCommandEvent& event);
+		void okButtonClick(wxCommandEvent& event);
+	
+	private:
+		//Do not add custom control declarations between 
+		//GUI Control Declaration Start and GUI Control Declaration End.
+		//wxDev-C++ will remove them. Add custom code after the block.
+		////GUI Control Declaration Start
+		wxButton *okButton;
+		wxButton *cancelButton;
+		wxGrid *searchGrid;
+		wxButton *searchButton;
+		wxTextCtrl *idField;
+		wxStaticText *WxStaticText1;
+		wxStaticBox *idLabel;
+		////GUI Control Declaration End
+		
+	private:
+		//Note: if you receive any error with these enum IDs, then you need to
+		//change your old form code that are based on the #define control IDs.
+		//#defines may replace a numeric value for the enum names.
+		//Try copy and pasting the below block in your old form header files.
+		enum
+		{
+			////GUI Enum Control ID Start
+			ID_OKBUTTON = 1028,
+			ID_CANCELBUTTON = 1027,
+			ID_SEARCHGRID = 1026,
+			ID_SEARCHBUTTON = 1025,
+			ID_IDFIELD = 1024,
+			ID_WXSTATICTEXT1 = 1023,
+			ID_IDLABEL = 1022,
+			////GUI Enum Control ID End
+			ID_DUMMY_VALUE_ //don't remove this value unless you have other enum values
+		};
+	
+	private:
+		void OnClose(wxCloseEvent& event);
+		void CreateGUIControls();
+};
+
+#endif

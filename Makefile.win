@@ -1,0 +1,67 @@
+# Project: Library
+# Compiler: Default VC6 compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 13/05/18 17:44
+
+WXLIBNAME = wxmsw29u
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = "windres.exe"
+OBJ       = Objects/MingW/LibraryApp.o Objects/MingW/LibraryForm.o Objects/MingW/AddBookDialog.o Objects/MingW/DeleteBookDialog.o Objects/MingW/SearchBookDialog.o Objects/MingW/NewIssueDialog.o Objects/MingW/DeleteIssueDialog.o Objects/MingW/SearchIssueDialog.o Objects/MingW/EditBookDialog.o Objects/MingW/Library_private.res
+LINKOBJ   = "Objects/MingW/LibraryApp.o" "Objects/MingW/LibraryForm.o" "Objects/MingW/AddBookDialog.o" "Objects/MingW/DeleteBookDialog.o" "Objects/MingW/SearchBookDialog.o" "Objects/MingW/NewIssueDialog.o" "Objects/MingW/DeleteIssueDialog.o" "Objects/MingW/SearchIssueDialog.o" "Objects/MingW/EditBookDialog.o" Objects/MingW/Library_private.res
+LIBS      = -L"C:/Program Files (x86)/Dev-Cpp/lib/wx/gcc_lib" -L"C:/Program Files (x86)/Dev-Cpp/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -mwindows -l$(WXLIBNAME) -l$(WXLIBNAME)_gl -lwxscintilla -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxregexu -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32  -g3 
+INCS      = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS   = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" -I"C:/Program Files (x86)/Dev-Cpp/" -I"C:/Program Files (x86)/Dev-Cpp/include/common"
+RCINCS    = --include-dir "C:/PROGRA~2/Dev-Cpp/include/common"
+BIN       = Output/MingW/Library.exe
+DEFINES   = -D__WXMSW__ -D__GNUWIN32__ -D_UNICODE
+CXXFLAGS  = $(CXXINCS) $(DEFINES)   -g3
+CFLAGS    = $(INCS) $(DEFINES)   -g3
+GPROF     = gprof.exe
+ifeq ($(OS),Windows_NT)
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+else
+   RM = rm -f
+   FixPath = $1
+endif
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(call FixPath,$(LINKOBJ)) "$(call FixPath,$(BIN))"
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "$(BIN)" $(LIBS) 
+
+Objects/MingW/LibraryApp.o: $(GLOBALDEPS) LibraryApp.cpp LibraryApp.h LibraryForm.h EditBookDialog.h AddBookDialog.h Book.h DeleteBookDialog.h SearchBookDialog.h NewIssueDialog.h DeleteIssueDialog.h SearchIssueDialog.h
+	$(CPP) -c LibraryApp.cpp -o Objects/MingW/LibraryApp.o $(CXXFLAGS)
+
+Objects/MingW/LibraryForm.o: $(GLOBALDEPS) LibraryForm.cpp LibraryForm.h EditBookDialog.h AddBookDialog.h Book.h DeleteBookDialog.h SearchBookDialog.h NewIssueDialog.h DeleteIssueDialog.h SearchIssueDialog.h
+	$(CPP) -c LibraryForm.cpp -o Objects/MingW/LibraryForm.o $(CXXFLAGS)
+
+Objects/MingW/AddBookDialog.o: $(GLOBALDEPS) AddBookDialog.cpp AddBookDialog.h Book.h
+	$(CPP) -c AddBookDialog.cpp -o Objects/MingW/AddBookDialog.o $(CXXFLAGS)
+
+Objects/MingW/DeleteBookDialog.o: $(GLOBALDEPS) DeleteBookDialog.cpp DeleteBookDialog.h Book.h
+	$(CPP) -c DeleteBookDialog.cpp -o Objects/MingW/DeleteBookDialog.o $(CXXFLAGS)
+
+Objects/MingW/SearchBookDialog.o: $(GLOBALDEPS) SearchBookDialog.cpp SearchBookDialog.h Book.h
+	$(CPP) -c SearchBookDialog.cpp -o Objects/MingW/SearchBookDialog.o $(CXXFLAGS)
+
+Objects/MingW/NewIssueDialog.o: $(GLOBALDEPS) NewIssueDialog.cpp NewIssueDialog.h Book.h
+	$(CPP) -c NewIssueDialog.cpp -o Objects/MingW/NewIssueDialog.o $(CXXFLAGS)
+
+Objects/MingW/DeleteIssueDialog.o: $(GLOBALDEPS) DeleteIssueDialog.cpp DeleteIssueDialog.h Book.h
+	$(CPP) -c DeleteIssueDialog.cpp -o Objects/MingW/DeleteIssueDialog.o $(CXXFLAGS)
+
+Objects/MingW/SearchIssueDialog.o: $(GLOBALDEPS) SearchIssueDialog.cpp SearchIssueDialog.h Book.h
+	$(CPP) -c SearchIssueDialog.cpp -o Objects/MingW/SearchIssueDialog.o $(CXXFLAGS)
+
+Objects/MingW/EditBookDialog.o: $(GLOBALDEPS) EditBookDialog.cpp EditBookDialog.h Book.h
+	$(CPP) -c EditBookDialog.cpp -o Objects/MingW/EditBookDialog.o $(CXXFLAGS)
+
+Objects/MingW/Library_private.res: Objects/MingW/Library_private.rc LibraryApp.rc 
+	$(WINDRES) --input-format=rc -o Objects/MingW/Library_private.res $(RCINCS) Objects/MingW/Library_private.rc -O coff
