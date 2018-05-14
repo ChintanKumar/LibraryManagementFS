@@ -52,34 +52,36 @@ void DeleteIssueDialog::CreateGUIControls()
 	//Add the custom code before or after the blocks
 	////GUI Items Creation Start
 
-	WxGrid1 = new wxGrid(this, ID_WXGRID1, wxPoint(15, 87), wxSize(275, 100));
+	WxGrid1 = new wxGrid(this, ID_WXGRID1, wxPoint(15, 91), wxSize(275, 176));
 	WxGrid1->SetDefaultColSize(175);
 	WxGrid1->SetDefaultRowSize(25);
 	WxGrid1->SetRowLabelSize(100);
 	WxGrid1->SetColLabelSize(25);
-	WxGrid1->CreateGrid(3,1,wxGrid::wxGridSelectCells);
+	WxGrid1->CreateGrid(6,1,wxGrid::wxGridSelectCells);
 	
-    WxGrid1->SetRowLabelValue(0, _("Book Taken By")); //from wxSmith 
-    WxGrid1->SetRowLabelValue(1, _("Issued Date")); //from wxSmith 
-    WxGrid1->SetRowLabelValue(2, _("Due Date"));
-    
-    WxGrid1->SetColLabelValue(0, _("Result"));
+	WxGrid1->SetRowLabelValue(0, _("Issue ID"));
+    WxGrid1->SetRowLabelValue(1, _("Book Taken By")); //from wxSmith 
+    WxGrid1->SetRowLabelValue(2, _("Book ID"));
+    WxGrid1->SetRowLabelValue(3, _("Book Name"));
+    WxGrid1->SetRowLabelValue(4, _("Issued Date")); //from wxSmith 
+    WxGrid1->SetRowLabelValue(5, _("Due Date"));
 
+    WxGrid1->SetColLabelValue(0, _("Result"));
 	searchButton = new wxButton(this, ID_SEARCHBUTTON, _("Search"), wxPoint(15, 58), wxSize(276, 25), 0, wxDefaultValidator, _("searchButton"));
 
-	deleteButton = new wxButton(this, ID_DELETEBUTTON, _("Delete"), wxPoint(216, 190), wxSize(75, 25), 0, wxDefaultValidator, _("deleteButton"));
+	deleteButton = new wxButton(this, ID_DELETEBUTTON, _("Delete"), wxPoint(215, 278), wxSize(75, 25), 0, wxDefaultValidator, _("deleteButton"));
 
-	cancelButton = new wxButton(this, ID_CANCELBUTTON, _("Cancel"), wxPoint(140, 190), wxSize(75, 24), 0, wxDefaultValidator, _("cancelButton"));
+	cancelButton = new wxButton(this, ID_CANCELBUTTON, _("Cancel"), wxPoint(140, 278), wxSize(75, 25), 0, wxDefaultValidator, _("cancelButton"));
 
-	idField = new wxTextCtrl(this, ID_IDFIELD, _(""), wxPoint(82, 30), wxSize(208, 25), 0, wxDefaultValidator, _("idField"));
+	idField = new wxTextCtrl(this, ID_IDFIELD, _(""), wxPoint(106, 30), wxSize(184, 25), 0, wxDefaultValidator, _("idField"));
 
-	idLabel = new wxStaticText(this, ID_IDLABEL, _("Enter ID"), wxPoint(16, 35), wxDefaultSize, 0, _("idLabel"));
+	idLabel = new wxStaticText(this, ID_IDLABEL, _("Enter Issue ID"), wxPoint(16, 35), wxDefaultSize, 0, _("idLabel"));
 
-	WxStaticBox1 = new wxStaticBox(this, ID_WXSTATICBOX1, _("Delete Issue by ID"), wxPoint(5, 5), wxSize(292, 220));
+	WxStaticBox1 = new wxStaticBox(this, ID_WXSTATICBOX1, _("Delete Issue by ID"), wxPoint(5, 6), wxSize(292, 310));
 
 	SetTitle(_("DeleteIssueDialog"));
 	SetIcon(wxNullIcon);
-	SetSize(8,8,310,260);
+	SetSize(8,8,310,350);
 	Center();
 	
 	////GUI Items Creation End
@@ -91,13 +93,15 @@ void DeleteIssueDialog::OnClose(wxCloseEvent& /*event*/) {
 
 void DeleteIssueDialog::deleteButtonClick(wxCommandEvent& event) {
     FILE *fs, *fg;
-    Book a;
+    int tempID;
+    Book a, temp;
     bool found = false;
     wxString str = idField->GetValue();
     fs = fopen("Issue.dat", "rb+");
     while (fread(&a, sizeof(a), 1, fs) == 1) {
-        if (a.id == wxAtoi(str)) {
+        if (a.issueID == wxAtoi(str)) {
             found = true;
+            temp = a;
         }
     }
     if (found) {
@@ -106,7 +110,7 @@ void DeleteIssueDialog::deleteButtonClick(wxCommandEvent& event) {
             fg = fopen("record.dat", "wb+");
             rewind(fs);
             while (fread(&a, sizeof(a), 1, fs) == 1) {
-              if (a.id != wxAtoi(str)) {
+              if (a.issueID != wxAtoi(str)) {
                   fseek(fs, 0, SEEK_CUR);
                   fwrite(&a, sizeof(a), 1, fg);
               }
@@ -115,6 +119,22 @@ void DeleteIssueDialog::deleteButtonClick(wxCommandEvent& event) {
             fclose(fg);
             remove("Issue.dat");
             rename("record.dat", "Issue.dat");
+            
+            FILE *fpt;
+            fpt = fopen("Bibek.dat", "rb+");
+            Book aone, tempt;
+            while (fread(&aone, sizeof(aone), 1, fpt) == 1) {
+                if (aone.id == temp.id) {
+                    tempt = aone;
+                    tempt.quantity = tempt.quantity + 1;
+                    //std::string msg = "Book Available, Name : " + a.name + "Rack No. : " + a.rackno + "Delete?";
+                    fseek(fpt, -sizeof(aone), SEEK_CUR);      //  move one structure back     
+                    fwrite(&tempt, sizeof(tempt), 1, fpt);         //  Overwrite updated structure
+                    break;  
+                }
+            }
+            fclose(fpt);
+
             wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Issue Removed"), wxT("Info"), wxOK | wxICON_QUESTION);
             dial->ShowModal();
             EndModal(666);
@@ -147,20 +167,32 @@ void DeleteIssueDialog::searchButtonClick(wxCommandEvent& event)
     
     fs = fopen("Issue.dat", "rb");
     while (fread(&a, sizeof(a), 1, fs) == 1) {
-        if (a.id == wxAtoi(str)) {
+        if (a.issueID == wxAtoi(str)) {
             found = true;
             temp = a;
         }
     }
     if (found) {
-        WxGrid1->SetCellValue(0, 0, _(temp.stname));
+        
+        
+        ss << temp.issueID;
+        WxGrid1->SetCellValue(0, 0, _(ss.str()));
+        ss.str(std::string());
+        
+        WxGrid1->SetCellValue(1, 0, _(temp.stname));
+        
+        ss << temp.id;
+        WxGrid1->SetCellValue(2, 0, _(ss.str()));
+        ss.str(std::string());
+        
+        WxGrid1->SetCellValue(3, 0, _(temp.name));
         
         ss << temp.issued.dd << "-" << temp.issued.mm << "-" << temp.issued.yy;
-        WxGrid1->SetCellValue(1, 0, _(ss.str()));
+        WxGrid1->SetCellValue(4, 0, _(ss.str()));
         ss.str(std::string());
         
         ss << temp.duedate.dd << "-" << temp.duedate.mm << "-" << temp.duedate.yy;
-        WxGrid1->SetCellValue(2, 0, _(ss.str()));
+        WxGrid1->SetCellValue(5, 0, _(ss.str()));
         ss.str(std::string());
 
     } else {

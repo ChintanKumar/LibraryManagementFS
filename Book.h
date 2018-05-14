@@ -5,6 +5,7 @@ struct Date {
 };
 typedef struct {
     int id;
+    int issueID;
     char stname[20];
     char name[20];
     char author[20];

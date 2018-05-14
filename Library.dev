@@ -86,7 +86,7 @@ ProductName=
 ProductVersion=
 AutoIncBuildNrOnRebuild=0
 AutoIncBuildNrOnCompile=0
-UnitCount=27
+UnitCount=28
 
 [Profile1]
 ProfileName=MingW gcc
@@ -224,7 +224,7 @@ BuildCmd=
 CompileCpp=1
 
 [Unit17]
-FileName=NewIssueDialog.cpp
+FileName=NewIssueDialog.h
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -254,7 +254,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit16]
-FileName=NewIssueDialog.h
+FileName=NewIssueDialog.cpp
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -264,7 +264,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit19]
-FileName=DeleteIssueDialog.h
+FileName=EditBookDialog.cpp
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -274,7 +274,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit20]
-FileName=DeleteIssueDialog.cpp
+FileName=EditBookDialog.h
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -284,7 +284,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit21]
-FileName=DeleteIssueDialog.wxform
+FileName=EditBookDialog.wxform
 Folder=Library
 Compile=0
 Link=0
@@ -293,7 +293,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit22]
-FileName=SearchIssueDialog.h
+FileName=SearchIssueDialog.cpp
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -303,7 +303,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit23]
-FileName=SearchIssueDialog.cpp
+FileName=SearchIssueDialog.h
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -322,7 +322,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit25]
-FileName=EditBookDialog.h
+FileName=DeleteIssueDialog.cpp
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -332,7 +332,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit26]
-FileName=EditBookDialog.cpp
+FileName=DeleteIssueDialog.h
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -342,10 +342,20 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit27]
-FileName=EditBookDialog.wxform
+FileName=DeleteIssueDialog.wxform
 Folder=Library
 Compile=0
 Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit28]
+FileName=Book.h
+CompileCpp=1
+Folder=Library
+Compile=1
+Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=

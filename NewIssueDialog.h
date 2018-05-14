@@ -47,6 +47,7 @@ class NewIssueDialog : public wxDialog
 		NewIssueDialog(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("NewIssueDialog"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = NewIssueDialog_STYLE);
 		virtual ~NewIssueDialog();
 		bool checkID(int);
+		int getRandomID();
 		void WxButton1Click(wxCommandEvent& event);
 		void searchButtonClick(wxCommandEvent& event);
 		void addIssueButtonClick(wxCommandEvent& event);

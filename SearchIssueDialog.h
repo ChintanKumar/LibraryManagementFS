@@ -26,9 +26,10 @@
 //Header Include Start and Header Include End.
 //wxDev-C++ designer will remove them. Add custom headers after the block.
 ////Header Include Start
-#include <wx/textctrl.h>
+#include <wx/radiobox.h>
 #include <wx/grid.h>
 #include <wx/stattext.h>
+#include <wx/textctrl.h>
 #include <wx/button.h>
 #include <wx/statbox.h>
 ////Header Include End
@@ -49,17 +50,19 @@ class SearchIssueDialog : public wxDialog
 		void searchButtonClick(wxCommandEvent& event);
 		void cancelButtonClick(wxCommandEvent& event);
 		void okButtonClick(wxCommandEvent& event);
+		void WxRadioButton1Click(wxCommandEvent& event);
 	
 	private:
 		//Do not add custom control declarations between 
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
-		wxButton *cancelButton;
-		wxTextCtrl *idField;
-		wxButton *okButton;
-		wxGrid *issueResultGrid;
+		wxRadioBox *typeRadio;
+		wxButton *deleteButton;
+		wxButton *WxButton1;
+		wxGrid *WxGrid1;
 		wxStaticText *idLabel;
+		wxTextCtrl *idField;
 		wxButton *searchButton;
 		wxStaticBox *WxStaticBox1;
 		////GUI Control Declaration End
@@ -72,13 +75,14 @@ class SearchIssueDialog : public wxDialog
 		enum
 		{
 			////GUI Enum Control ID Start
-			ID_CANCELBUTTON = 1014,
-			ID_IDFIELD = 1013,
-			ID_OKBUTTON = 1012,
-			ID_ISSUERESULTGRID = 1010,
-			ID_IDLABLE = 1009,
-			ID_SEARCHBUTTON = 1008,
-			ID_WXSTATICBOX1 = 1007,
+			ID_TYPERADIO = 1074,
+			ID_DELETEBUTTON = 1073,
+			ID_WXBUTTON1 = 1072,
+			ID_WXGRID1 = 1071,
+			ID_IDLABEL = 1070,
+			ID_IDFIELD = 1069,
+			ID_SEARCHBUTTON = 1068,
+			ID_WXSTATICBOX1 = 1067,
 			////GUI Enum Control ID End
 			ID_DUMMY_VALUE_ //don't remove this value unless you have other enum values
 		};

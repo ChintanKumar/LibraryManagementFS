@@ -106,13 +106,14 @@ void LibraryForm::CreateGUIControls()
 	issueGrid->SetDefaultRowSize(25);
 	issueGrid->SetRowLabelSize(50);
 	issueGrid->SetColLabelSize(25);
-	issueGrid->CreateGrid(10,5,wxGrid::wxGridSelectCells);
+	issueGrid->CreateGrid(10,6,wxGrid::wxGridSelectCells);
 	
-	issueGrid->SetColLabelValue(0, _("Student Name")); //from wxSmith 
-    issueGrid->SetColLabelValue(1, _("ID")); //from wxSmith 
-    issueGrid->SetColLabelValue(2, _("Book Name"));
-    issueGrid->SetColLabelValue(3, _("Issued Date"));
-    issueGrid->SetColLabelValue(4, _("Return Date"));
+	issueGrid->SetColLabelValue(0, _("Issue ID")); //from wxSmith 
+    issueGrid->SetColLabelValue(1, _("Student Name"));
+    issueGrid->SetColLabelValue(2, _("ID")); //from wxSmith 
+    issueGrid->SetColLabelValue(3, _("Book Name"));
+    issueGrid->SetColLabelValue(4, _("Issued Date"));
+    issueGrid->SetColLabelValue(5, _("Return Date"));
 
 	issueButtonPanel = new wxPanel(issuePage, ID_ISSUEBUTTONPANEL, wxPoint(0, 0), wxSize(861, 30));
 
@@ -213,20 +214,24 @@ void LibraryForm::loadIssueData() {
     fs = fopen("Issue.dat", "rb+");
     while (fread(&a, sizeof(a), 1, fs) == 1) {
         
-        issueGrid->SetCellValue(j, 0, _(a.stname));
-    
-        ss << a.id;
-        issueGrid->SetCellValue(j, 1, _(ss.str()));
+        ss << a.issueID;
+        issueGrid->SetCellValue(j, 0, _(ss.str()));
         ss.str(std::string());
         
-        issueGrid->SetCellValue(j, 2, _(a.name));
+        issueGrid->SetCellValue(j, 1, _(a.stname));
+    
+        ss << a.id;
+        issueGrid->SetCellValue(j, 2, _(ss.str()));
+        ss.str(std::string());
+        
+        issueGrid->SetCellValue(j, 3, _(a.name));
         
         ss << a.duedate.dd << "-" << a.duedate.mm << "-" << a.duedate.yy;
-        issueGrid->SetCellValue(j, 3, _(ss.str()));
+        issueGrid->SetCellValue(j, 4, _(ss.str()));
         ss.str(std::string());
         
         ss << a.issued.dd << "-" << a.issued.mm << "-" << a.issued.yy;
-        issueGrid->SetCellValue(j, 4, _(ss.str()));
+        issueGrid->SetCellValue(j, 5, _(ss.str()));
         ss.str(std::string());
         
         j++;
@@ -255,6 +260,7 @@ void LibraryForm::deleteIssueButtonClick(wxCommandEvent& event) {
 	if (deleteIssueDialog->ShowModal() == 666) {
         deleteIssueDialog->Destroy();
         loadIssueData();
+        loadBookData();
     }
 }
 
@@ -272,7 +278,7 @@ void LibraryForm::searchIssueButtonClick(wxCommandEvent& event) {
 /*
  * tabPagePageChanged
  */
-void LibraryForm::tabPagePageChanged(wxNotebookEvent& event)
-{
+void LibraryForm::tabPagePageChanged(wxNotebookEvent& event) {
+    loadIssueData();
 	// insert your code here
 }

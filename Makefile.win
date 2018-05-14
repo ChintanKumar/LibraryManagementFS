@@ -1,14 +1,14 @@
 # Project: Library
 # Compiler: Default VC6 compiler
 # Compiler Type: MingW 3
-# Makefile created by wxDev-C++ IDE 7.4.2.569 on 13/05/18 17:44
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 14/05/18 23:50
 
 WXLIBNAME = wxmsw29u
 CPP       = g++.exe
 CC        = gcc.exe
 WINDRES   = "windres.exe"
-OBJ       = Objects/MingW/LibraryApp.o Objects/MingW/LibraryForm.o Objects/MingW/AddBookDialog.o Objects/MingW/DeleteBookDialog.o Objects/MingW/SearchBookDialog.o Objects/MingW/NewIssueDialog.o Objects/MingW/DeleteIssueDialog.o Objects/MingW/SearchIssueDialog.o Objects/MingW/EditBookDialog.o Objects/MingW/Library_private.res
-LINKOBJ   = "Objects/MingW/LibraryApp.o" "Objects/MingW/LibraryForm.o" "Objects/MingW/AddBookDialog.o" "Objects/MingW/DeleteBookDialog.o" "Objects/MingW/SearchBookDialog.o" "Objects/MingW/NewIssueDialog.o" "Objects/MingW/DeleteIssueDialog.o" "Objects/MingW/SearchIssueDialog.o" "Objects/MingW/EditBookDialog.o" Objects/MingW/Library_private.res
+OBJ       = Objects/MingW/LibraryApp.o Objects/MingW/LibraryForm.o Objects/MingW/AddBookDialog.o Objects/MingW/DeleteBookDialog.o Objects/MingW/SearchBookDialog.o Objects/MingW/NewIssueDialog.o Objects/MingW/EditBookDialog.o Objects/MingW/SearchIssueDialog.o Objects/MingW/DeleteIssueDialog.o Objects/MingW/Library_private.res
+LINKOBJ   = "Objects/MingW/LibraryApp.o" "Objects/MingW/LibraryForm.o" "Objects/MingW/AddBookDialog.o" "Objects/MingW/DeleteBookDialog.o" "Objects/MingW/SearchBookDialog.o" "Objects/MingW/NewIssueDialog.o" "Objects/MingW/EditBookDialog.o" "Objects/MingW/SearchIssueDialog.o" "Objects/MingW/DeleteIssueDialog.o" Objects/MingW/Library_private.res
 LIBS      = -L"C:/Program Files (x86)/Dev-Cpp/lib/wx/gcc_lib" -L"C:/Program Files (x86)/Dev-Cpp/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -mwindows -l$(WXLIBNAME) -l$(WXLIBNAME)_gl -lwxscintilla -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxregexu -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32  -g3 
 INCS      = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
 CXXINCS   = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" -I"C:/Program Files (x86)/Dev-Cpp/" -I"C:/Program Files (x86)/Dev-Cpp/include/common"
@@ -54,14 +54,14 @@ Objects/MingW/SearchBookDialog.o: $(GLOBALDEPS) SearchBookDialog.cpp SearchBookD
 Objects/MingW/NewIssueDialog.o: $(GLOBALDEPS) NewIssueDialog.cpp NewIssueDialog.h Book.h
 	$(CPP) -c NewIssueDialog.cpp -o Objects/MingW/NewIssueDialog.o $(CXXFLAGS)
 
-Objects/MingW/DeleteIssueDialog.o: $(GLOBALDEPS) DeleteIssueDialog.cpp DeleteIssueDialog.h Book.h
-	$(CPP) -c DeleteIssueDialog.cpp -o Objects/MingW/DeleteIssueDialog.o $(CXXFLAGS)
+Objects/MingW/EditBookDialog.o: $(GLOBALDEPS) EditBookDialog.cpp EditBookDialog.h Book.h
+	$(CPP) -c EditBookDialog.cpp -o Objects/MingW/EditBookDialog.o $(CXXFLAGS)
 
 Objects/MingW/SearchIssueDialog.o: $(GLOBALDEPS) SearchIssueDialog.cpp SearchIssueDialog.h Book.h
 	$(CPP) -c SearchIssueDialog.cpp -o Objects/MingW/SearchIssueDialog.o $(CXXFLAGS)
 
-Objects/MingW/EditBookDialog.o: $(GLOBALDEPS) EditBookDialog.cpp EditBookDialog.h Book.h
-	$(CPP) -c EditBookDialog.cpp -o Objects/MingW/EditBookDialog.o $(CXXFLAGS)
+Objects/MingW/DeleteIssueDialog.o: $(GLOBALDEPS) DeleteIssueDialog.cpp DeleteIssueDialog.h Book.h
+	$(CPP) -c DeleteIssueDialog.cpp -o Objects/MingW/DeleteIssueDialog.o $(CXXFLAGS)
 
 Objects/MingW/Library_private.res: Objects/MingW/Library_private.rc LibraryApp.rc 
 	$(WINDRES) --input-format=rc -o Objects/MingW/Library_private.res $(RCINCS) Objects/MingW/Library_private.rc -O coff

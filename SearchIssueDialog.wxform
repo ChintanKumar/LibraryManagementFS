@@ -1,11 +1,11 @@
-object frmNewForm_3: TfrmNewForm
+object frmNewForm_2: TfrmNewForm
   Left = 8
   Top = 8
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'SearchIssueDialog'
-  ClientHeight = 284
-  ClientWidth = 273
+  ClientHeight = 367
+  ClientWidth = 301
   Color = clBtnFace
   OldCreateOrder = True
   PopupMenu = DesignerPopup.Owner
@@ -32,10 +32,10 @@ object frmNewForm_3: TfrmNewForm
   TextHeight = 15
   object WxStaticBox1: TWxStaticBox
     Left = 5
-    Top = 4
-    Width = 269
-    Height = 281
-    Caption = 'Search Issue by ID'
+    Top = 6
+    Width = 296
+    Height = 361
+    Caption = 'Delete Issue by ID'
     TabOrder = 0
     Wx_BGColor = clBlack
     Wx_Class = 'wxStaticBox'
@@ -43,7 +43,7 @@ object frmNewForm_3: TfrmNewForm
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
     Wx_IDName = 'ID_WXSTATICBOX1'
-    Wx_IDValue = 1007
+    Wx_IDValue = 1067
     Wx_PaneCaption = 'WxStaticBox1'
     Wx_PaneName = 'WxStaticBox1_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -62,9 +62,9 @@ object frmNewForm_3: TfrmNewForm
     Wx_Floating_Y_Pos = 0
   end
   object searchButton: TWxButton
-    Left = 14
-    Top = 50
-    Width = 251
+    Left = 16
+    Top = 107
+    Width = 276
     Height = 25
     Caption = 'Search'
     TabOrder = 1
@@ -81,7 +81,7 @@ object frmNewForm_3: TfrmNewForm
     Wx_GeneralStyle = []
     Wx_Hidden = False
     Wx_IDName = 'ID_SEARCHBUTTON'
-    Wx_IDValue = 1008
+    Wx_IDValue = 1068
     Wx_PaneCaption = 'WxButton1'
     Wx_PaneName = 'WxButton1_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -99,21 +99,57 @@ object frmNewForm_3: TfrmNewForm
     Wx_Floating_X_Pos = 0
     Wx_Floating_Y_Pos = 0
   end
+  object idField: TWxEdit
+    Left = 106
+    Top = 30
+    Width = 184
+    Height = 25
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    AutoSize = False
+    TabOrder = 2
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxTextCtrl'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_EditStyle = []
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_IDFIELD'
+    Wx_IDValue = 1069
+    Wx_MaxLength = 0
+    Wx_PaneCaption = 'WxEdit1'
+    Wx_PaneName = 'WxEdit1_Pane'
+    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+    Wx_Aui_Dockable_Direction = []
+    Wx_Aui_Pane_Style = []
+    Wx_Aui_Pane_Buttons = []
+    Wx_BestSize_Height = 0
+    Wx_BestSize_Width = 0
+    Wx_MinSize_Height = 0
+    Wx_MinSize_Width = 0
+    Wx_MaxSize_Height = 0
+    Wx_MaxSize_Width = 0
+    Wx_Floating_Height = 0
+    Wx_Floating_Width = 0
+    Wx_Floating_X_Pos = 0
+    Wx_Floating_Y_Pos = 0
+  end
   object idLabel: TWxStaticText
     Left = 16
-    Top = 26
-    Width = 45
+    Top = 35
+    Width = 74
     Height = 19
-    Caption = 'Enter ID'
-    TabOrder = 2
+    Caption = 'Enter Issue ID'
+    TabOrder = 3
     Wx_BGColor = clBlack
     Wx_Class = 'wxStaticText'
     Wx_ControlOrientation = wxControlVertical
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
     Wx_Hidden = False
-    Wx_IDName = 'ID_IDLABLE'
-    Wx_IDValue = 1009
+    Wx_IDName = 'ID_IDLABEL'
+    Wx_IDValue = 1070
     Wx_LabelStyle = []
     Wx_PaneCaption = 'WxStaticText1'
     Wx_PaneName = 'WxStaticText1_Pane'
@@ -132,16 +168,16 @@ object frmNewForm_3: TfrmNewForm
     Wx_Floating_X_Pos = 0
     Wx_Floating_Y_Pos = 0
   end
-  object issueResultGrid: TWxGrid
+  object WxGrid1: TWxGrid
     Left = 16
-    Top = 80
-    Width = 247
-    Height = 160
+    Top = 139
+    Width = 275
+    Height = 187
     ColCount = 6
     DefaultColWidth = 50
     DefaultRowHeight = 25
     RowCount = 6
-    TabOrder = 3
+    TabOrder = 4
     Wx_LabelColSize = 50
     Wx_LabelRowSize = 25
     Wx_BGColor = clBlack
@@ -151,8 +187,8 @@ object frmNewForm_3: TfrmNewForm
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
     Wx_Hidden = False
-    Wx_IDName = 'ID_ISSUERESULTGRID'
-    Wx_IDValue = 1010
+    Wx_IDName = 'ID_WXGRID1'
+    Wx_IDValue = 1071
     Wx_PaneCaption = 'WxGrid1'
     Wx_PaneName = 'WxGrid1_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -184,87 +220,13 @@ object frmNewForm_3: TfrmNewForm
       25
       25)
   end
-  object okButton: TWxButton
-    Left = 189
-    Top = 248
-    Width = 75
-    Height = 25
-    Caption = 'OK'
-    TabOrder = 4
-    EVT_BUTTON = 'okButtonClick'
-    Wx_BKColor = clBlack
-    Wx_ButtonStyle = []
-    Wx_Class = 'wxButton'
-    Wx_ControlOrientation = wxControlVertical
-    Wx_Default = False
-    Wx_EventList.Strings = (
-      'EVT_BUTTON:OnClick'
-      'EVT_UPDATE_UI:OnUpdateUI')
-    Wx_FGColor = clBlack
-    Wx_GeneralStyle = []
-    Wx_Hidden = False
-    Wx_IDName = 'ID_OKBUTTON'
-    Wx_IDValue = 1012
-    Wx_PaneCaption = 'WxButton3'
-    Wx_PaneName = 'WxButton3_Pane'
-    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
-    Wx_Aui_Dockable_Direction = []
-    Wx_Aui_Pane_Style = []
-    Wx_Aui_Pane_Buttons = []
-    Wx_BestSize_Height = 0
-    Wx_BestSize_Width = 0
-    Wx_MinSize_Height = 0
-    Wx_MinSize_Width = 0
-    Wx_MaxSize_Height = 0
-    Wx_MaxSize_Width = 0
-    Wx_Floating_Height = 0
-    Wx_Floating_Width = 0
-    Wx_Floating_X_Pos = 0
-    Wx_Floating_Y_Pos = 0
-  end
-  object idField: TWxEdit
-    Left = 93
-    Top = 24
-    Width = 170
-    Height = 20
-    BevelInner = bvNone
-    BevelOuter = bvNone
-    AutoSize = False
-    TabOrder = 5
-    Wx_BGColor = clBlack
-    Wx_Class = 'wxTextCtrl'
-    Wx_ControlOrientation = wxControlVertical
-    Wx_EditStyle = []
-    Wx_FGColor = clBlack
-    Wx_GeneralStyle = []
-    Wx_Hidden = False
-    Wx_IDName = 'ID_IDFIELD'
-    Wx_IDValue = 1013
-    Wx_MaxLength = 0
-    Wx_PaneCaption = 'WxEdit1'
-    Wx_PaneName = 'WxEdit1_Pane'
-    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
-    Wx_Aui_Dockable_Direction = []
-    Wx_Aui_Pane_Style = []
-    Wx_Aui_Pane_Buttons = []
-    Wx_BestSize_Height = 0
-    Wx_BestSize_Width = 0
-    Wx_MinSize_Height = 0
-    Wx_MinSize_Width = 0
-    Wx_MaxSize_Height = 0
-    Wx_MaxSize_Width = 0
-    Wx_Floating_Height = 0
-    Wx_Floating_Width = 0
-    Wx_Floating_X_Pos = 0
-    Wx_Floating_Y_Pos = 0
-  end
-  object cancelButton: TWxButton
-    Left = 111
-    Top = 248
+  object WxButton1: TWxButton
+    Left = 138
+    Top = 330
     Width = 75
     Height = 25
     Caption = 'Cancel'
-    TabOrder = 6
+    TabOrder = 5
     EVT_BUTTON = 'cancelButtonClick'
     Wx_BKColor = clBlack
     Wx_ButtonStyle = []
@@ -277,10 +239,87 @@ object frmNewForm_3: TfrmNewForm
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
     Wx_Hidden = False
-    Wx_IDName = 'ID_CANCELBUTTON'
-    Wx_IDValue = 1014
-    Wx_PaneCaption = 'WxButton3'
-    Wx_PaneName = 'WxButton3_Pane'
+    Wx_IDName = 'ID_WXBUTTON1'
+    Wx_IDValue = 1072
+    Wx_PaneCaption = 'WxButton2'
+    Wx_PaneName = 'WxButton2_Pane'
+    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+    Wx_Aui_Dockable_Direction = []
+    Wx_Aui_Pane_Style = []
+    Wx_Aui_Pane_Buttons = []
+    Wx_BestSize_Height = 0
+    Wx_BestSize_Width = 0
+    Wx_MinSize_Height = 0
+    Wx_MinSize_Width = 0
+    Wx_MaxSize_Height = 0
+    Wx_MaxSize_Width = 0
+    Wx_Floating_Height = 0
+    Wx_Floating_Width = 0
+    Wx_Floating_X_Pos = 0
+    Wx_Floating_Y_Pos = 0
+  end
+  object deleteButton: TWxButton
+    Left = 216
+    Top = 330
+    Width = 75
+    Height = 25
+    Caption = 'Delete'
+    TabOrder = 6
+    EVT_BUTTON = 'deleteButtonClick'
+    Wx_BKColor = clBlack
+    Wx_ButtonStyle = []
+    Wx_Class = 'wxButton'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_BUTTON:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_DELETEBUTTON'
+    Wx_IDValue = 1073
+    Wx_PaneCaption = 'WxButton2'
+    Wx_PaneName = 'WxButton2_Pane'
+    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+    Wx_Aui_Dockable_Direction = []
+    Wx_Aui_Pane_Style = []
+    Wx_Aui_Pane_Buttons = []
+    Wx_BestSize_Height = 0
+    Wx_BestSize_Width = 0
+    Wx_MinSize_Height = 0
+    Wx_MinSize_Width = 0
+    Wx_MaxSize_Height = 0
+    Wx_MaxSize_Width = 0
+    Wx_Floating_Height = 0
+    Wx_Floating_Width = 0
+    Wx_Floating_X_Pos = 0
+    Wx_Floating_Y_Pos = 0
+  end
+  object typeRadio: TWxRadioBox
+    Left = 16
+    Top = 57
+    Width = 275
+    Height = 44
+    Caption = 'Search By'
+    Orientation = wxdHorizontal
+    Items.Strings = (
+      'ID'
+      'Name')
+    TabOrder = 7
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxRadioBox'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_EventList.Strings = (
+      'EVT_RADIOBOX:OnClick'
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_IDName = 'ID_TYPERADIO'
+    Wx_IDValue = 1074
+    Wx_RadioBoxStyle = wxRA_SPECIFY_ROWS
+    Wx_PaneCaption = 'WxRadioBox1'
+    Wx_PaneName = 'WxRadioBox1_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
     Wx_Aui_Dockable_Direction = []
     Wx_Aui_Pane_Style = []
