@@ -1,7 +1,7 @@
 [Project]
 FileName=Library.dev
 Name=Library
-UnitCount=15
+UnitCount=27
 PchHead=-1
 PchSource=-1
 Ver=3
@@ -99,21 +99,21 @@ MakeIncludes=
 Compiler=
 CppCompiler=
 Linker=-mwindows_@@_-l$(WXLIBNAME)_@@_-l$(WXLIBNAME)_gl_@@_-lwxscintilla_@@_-lwxtiff_@@_-lwxjpeg_@@_-lwxpng_@@_-lwxzlib_@@_-lwxregexu_@@_-lwxexpat_@@_-lkernel32_@@_-luser32_@@_-lgdi32_@@_-lcomdlg32_@@_-lwinspool_@@_-lwinmm_@@_-lshell32_@@_-lcomctl32_@@_-lole32_@@_-loleaut32_@@_-luuid_@@_-lrpcrt4_@@_-ladvapi32_@@_-lwsock32_@@_-lodbc32_@@_-lopengl32_@@_
-PreprocDefines=__WXMSW___@@___GNUWIN32___@@__UNICODE
+PreprocDefines=__WXMSW___@@___GNUWIN32___@@__UNICODE_@@_
 CompilerSettings=0000000000000001000000
 Icon=
 ExeOutput=Output\MingW
 ImagesOutput=Images\
 ObjectOutput=Objects\MingW
 OverrideOutput=0
-OverrideOutputName=
+OverrideOutputName=Library.exe
 HostApplication=
 CommandLine=
 UseCustomMakefile=0
 CustomMakefile=
 IncludeVersionInfo=0
 SupportXPThemes=0
-CompilerSet=0
+CompilerSet=1
 CompilerType=0
 
 [Profile2]
@@ -224,7 +224,7 @@ BuildCmd=
 CompileCpp=1
 
 [Unit17]
-FileName=NewIssueDialog.h
+FileName=SearchIssueDialog.h
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -234,7 +234,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit18]
-FileName=NewIssueDialog.wxform
+FileName=SearchIssueDialog.wxform
 CompileCpp=1
 Folder=Library
 Compile=0
@@ -254,45 +254,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit16]
-FileName=NewIssueDialog.cpp
-CompileCpp=1
-Folder=Library
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit19]
-FileName=EditBookDialog.cpp
-CompileCpp=1
-Folder=Library
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit20]
-FileName=EditBookDialog.h
-CompileCpp=1
-Folder=Library
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit21]
-FileName=EditBookDialog.wxform
-Folder=Library
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit22]
 FileName=SearchIssueDialog.cpp
 CompileCpp=1
 Folder=Library
@@ -302,8 +263,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit23]
-FileName=SearchIssueDialog.h
+[Unit19]
+FileName=NewIssueDialog.cpp
 CompileCpp=1
 Folder=Library
 Compile=1
@@ -312,8 +273,18 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit24]
-FileName=SearchIssueDialog.wxform
+[Unit20]
+FileName=NewIssueDialog.h
+CompileCpp=1
+Folder=Library
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit21]
+FileName=NewIssueDialog.wxform
 Folder=Library
 Compile=0
 Link=0
@@ -321,7 +292,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit25]
+[Unit22]
 FileName=DeleteIssueDialog.cpp
 CompileCpp=1
 Folder=Library
@@ -331,7 +302,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit26]
+[Unit23]
 FileName=DeleteIssueDialog.h
 CompileCpp=1
 Folder=Library
@@ -341,8 +312,37 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit27]
+[Unit24]
 FileName=DeleteIssueDialog.wxform
+Folder=Library
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit25]
+FileName=EditBookDialog.cpp
+CompileCpp=1
+Folder=Library
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit26]
+FileName=EditBookDialog.h
+CompileCpp=1
+Folder=Library
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit27]
+FileName=EditBookDialog.wxform
 Folder=Library
 Compile=0
 Link=0

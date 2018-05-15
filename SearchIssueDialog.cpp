@@ -56,18 +56,27 @@ void SearchIssueDialog::CreateGUIControls()
 	arrayStringFor_typeRadio.Add(_("ID"));
 	arrayStringFor_typeRadio.Add(_("Name"));
 	typeRadio = new wxRadioBox(this, ID_TYPERADIO, _("Search By"), wxPoint(16, 57), wxSize(275, 44), arrayStringFor_typeRadio, 1, wxRA_SPECIFY_ROWS, wxDefaultValidator, _("typeRadio"));
-	typeRadio->SetSelection(1);
+	typeRadio->SetSelection(0);
 
 	deleteButton = new wxButton(this, ID_DELETEBUTTON, _("Delete"), wxPoint(216, 330), wxSize(75, 25), 0, wxDefaultValidator, _("deleteButton"));
 
 	WxButton1 = new wxButton(this, ID_WXBUTTON1, _("Cancel"), wxPoint(138, 330), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton1"));
 
-	WxGrid1 = new wxGrid(this, ID_WXGRID1, wxPoint(16, 139), wxSize(275, 187));
-	WxGrid1->SetDefaultColSize(50);
+	WxGrid1 = new wxGrid(this, ID_WXGRID1, wxPoint(16, 139), wxSize(275, 176));
+	WxGrid1->SetDefaultColSize(175);
 	WxGrid1->SetDefaultRowSize(25);
-	WxGrid1->SetRowLabelSize(50);
+	WxGrid1->SetRowLabelSize(100);
 	WxGrid1->SetColLabelSize(25);
-	WxGrid1->CreateGrid(5,5,wxGrid::wxGridSelectCells);
+	WxGrid1->CreateGrid(6,1,wxGrid::wxGridSelectCells);
+	
+	WxGrid1->SetRowLabelValue(0, _("Issue ID"));
+    WxGrid1->SetRowLabelValue(1, _("Book Taken By")); //from wxSmith 
+    WxGrid1->SetRowLabelValue(2, _("Book ID"));
+    WxGrid1->SetRowLabelValue(3, _("Book Name"));
+    WxGrid1->SetRowLabelValue(4, _("Issued Date")); //from wxSmith 
+    WxGrid1->SetRowLabelValue(5, _("Due Date"));
+
+    WxGrid1->SetColLabelValue(0, _("Result"));
 
 	idLabel = new wxStaticText(this, ID_IDLABEL, _("Enter Issue ID"), wxPoint(16, 35), wxDefaultSize, 0, _("idLabel"));
 
@@ -113,7 +122,8 @@ void SearchIssueDialog::searchButtonClick(wxCommandEvent& event) {
         ss.str(std::string());
         
         WxGrid1->SetCellValue(1, 0, _(temp.stname));
-         ss << temp.issueID;
+        
+        ss << temp.id;
         WxGrid1->SetCellValue(2, 0, _(ss.str()));
         ss.str(std::string());
         

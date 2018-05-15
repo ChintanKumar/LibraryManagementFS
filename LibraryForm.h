@@ -32,6 +32,7 @@
 #include <wx/panel.h>
 #include <wx/notebook.h>
 #include <wx/statusbr.h>
+
 #include "EditBookDialog.h"
 #include "AddBookDialog.h"
 #include "DeleteBookDialog.h"

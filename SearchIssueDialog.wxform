@@ -1,4 +1,4 @@
-object frmNewForm_2: TfrmNewForm
+object frmNewForm_1: TfrmNewForm
   Left = 8
   Top = 8
   AutoScroll = False
@@ -318,6 +318,7 @@ object frmNewForm_2: TfrmNewForm
     Wx_IDName = 'ID_TYPERADIO'
     Wx_IDValue = 1074
     Wx_RadioBoxStyle = wxRA_SPECIFY_ROWS
+    Wx_Selection = 0
     Wx_PaneCaption = 'WxRadioBox1'
     Wx_PaneName = 'WxRadioBox1_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
