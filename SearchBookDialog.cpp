@@ -108,19 +108,38 @@ void SearchBookDialog::idFieldUpdated(wxCommandEvent& event)
  */
 void SearchBookDialog::searchButtonClick(wxCommandEvent& event) {
     Book a, temp;
+    int num, pos = 0;
     bool found =false;
     std::stringstream ss;
     wxString str = idField->GetValue();
-    fpfour = fopen("Bibek.dat", "rb+"); //open file for reading propose
-    rewind(fpfour);
-	while (fread(&a, sizeof(a), 1, fpfour) == 1) {
-        if (a.id == wxAtoi(str)) {
+    
+    fpfour = fopen("Index.dat", "rb+"); //open file for reading propose
+	while ((num = getw(fpfour)) != EOF) {
+        if (num == wxAtoi(str)) {
             found = true;
-            temp = a;
+            break;
+            //temp = a;
         }
+        pos++;
     }
     
+
+    
+    //fpfour = fopen("Bibek.dat", "rb+"); //open file for reading propose
+//    rewind(fpfour);
+//	while (fread(&a, sizeof(a), 1, fpfour) == 1) {
+//        if (a.id == wxAtoi(str)) {
+//            found = true;
+//            temp = a;
+//        }
+//    }
+    
     if(found == true) {
+        fpfour = fopen("Bibek.dat", "rb+"); //open file for reading propose
+        
+        fseek(fpfour, pos * sizeof(temp), SEEK_SET);
+        fread(&temp, sizeof(temp), 1, fpfour);
+        
         ss << temp.id;
         searchGrid->SetCellValue(0, 0, _(ss.str()));
         ss.str(std::string());

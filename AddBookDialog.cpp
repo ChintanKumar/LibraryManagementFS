@@ -45,9 +45,14 @@ void AddBookDialog::CreateGUIControls() {
 }
 
 void AddBookDialog::addNewBook(Book a) {
+    FILE *fp_index;
+    fp_index = fopen("Index.dat", "ab+");
 	fpone = fopen("Bibek.dat", "ab+");
     fseek(fpone, 0, SEEK_END);
+    fseek(fp_index, 0, SEEK_END);
     fwrite(&a, sizeof(a), 1, fpone);
+    putw(a.id, fp_index);
+    fclose(fp_index);
     fclose(fpone);
 }
 
@@ -74,7 +79,7 @@ void AddBookDialog::addButtonClick(wxCommandEvent& event) {
     if(checkID(wxAtoi(str))) {
         wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Book ID already exists, Try Again?"), wxT("Info"), wxOK );
         dial->ShowModal();
-    } else {        
+    } else {
         a.id = wxAtoi(str);
     
         wxString name = nameField->GetValue();

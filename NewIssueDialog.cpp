@@ -125,7 +125,7 @@ void NewIssueDialog::cancelButtonClick(wxCommandEvent& event) {
  */
 void NewIssueDialog::issueButtonClick(wxCommandEvent& event) {
     Book a, temp;
-    FILE *fs;
+    FILE *fs, *fp_index;
     bool found;
     std::stringstream ss;
     wxString id = idField->GetValue();
@@ -170,6 +170,11 @@ void NewIssueDialog::issueButtonClick(wxCommandEvent& event) {
 //        fclose(fptwo);
         
         temp.issueID = getRandomID();
+        
+        fp_index = fopen("IndexIssue.dat", "ab+");
+        fseek(fp_index, 0, SEEK_END);
+        putw(temp.issueID, fp_index);
+        fclose(fp_index);
         
         wxCharBuffer bufferTwo = name.ToUTF8();
         strcpy(temp.stname, bufferTwo.data());

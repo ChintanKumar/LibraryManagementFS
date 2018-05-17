@@ -58,7 +58,7 @@ void SearchIssueDialog::CreateGUIControls()
 	typeRadio = new wxRadioBox(this, ID_TYPERADIO, _("Search By"), wxPoint(16, 57), wxSize(275, 44), arrayStringFor_typeRadio, 1, wxRA_SPECIFY_ROWS, wxDefaultValidator, _("typeRadio"));
 	typeRadio->SetSelection(0);
 
-	deleteButton = new wxButton(this, ID_DELETEBUTTON, _("Delete"), wxPoint(216, 330), wxSize(75, 25), 0, wxDefaultValidator, _("deleteButton"));
+	deleteButton = new wxButton(this, ID_DELETEBUTTON, _("OK"), wxPoint(216, 330), wxSize(75, 25), 0, wxDefaultValidator, _("deleteButton"));
 
 	WxButton1 = new wxButton(this, ID_WXBUTTON1, _("Cancel"), wxPoint(138, 330), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton1"));
 
@@ -84,7 +84,7 @@ void SearchIssueDialog::CreateGUIControls()
 
 	searchButton = new wxButton(this, ID_SEARCHBUTTON, _("Search"), wxPoint(16, 107), wxSize(276, 25), 0, wxDefaultValidator, _("searchButton"));
 
-	WxStaticBox1 = new wxStaticBox(this, ID_WXSTATICBOX1, _("Delete Issue by ID"), wxPoint(5, 6), wxSize(296, 361));
+	WxStaticBox1 = new wxStaticBox(this, ID_WXSTATICBOX1, _("Search Issue by ID"), wxPoint(5, 6), wxSize(296, 361));
 
 	SetTitle(_("SearchIssueDialog"));
 	SetIcon(wxNullIcon);
@@ -104,19 +104,35 @@ void SearchIssueDialog::OnClose(wxCloseEvent& /*event*/) {
 void SearchIssueDialog::searchButtonClick(wxCommandEvent& event) {
     FILE *fs;
     Book a, temp;
+    int num, pos = 0;
     bool found = false;
     
     std::stringstream ss;
     wxString str = idField->GetValue();
     
-    fs = fopen("Issue.dat", "rb");
-    while (fread(&a, sizeof(a), 1, fs) == 1) {
-        if (a.issueID == wxAtoi(str)) {
+    //fs = fopen("Issue.dat", "rb");
+//    while (fread(&a, sizeof(a), 1, fs) == 1) {
+//        if (a.issueID == wxAtoi(str)) {
+//            found = true;
+//            temp = a;
+//        }
+//    }
+
+    fs = fopen("IndexIssue.dat", "rb+"); //open file for reading propose
+	while ((num = getw(fs)) != EOF) {
+        if (num == wxAtoi(str)) {
             found = true;
-            temp = a;
+            break;
         }
+        pos++;
     }
     if (found) {
+        
+        fs = fopen("Issue.dat", "rb+"); //open file for reading propose
+        
+        fseek(fs, pos * sizeof(temp), SEEK_SET);
+        fread(&temp, sizeof(temp), 1, fs);
+        
         ss << temp.issueID;
         WxGrid1->SetCellValue(0, 0, _(ss.str()));
         ss.str(std::string());

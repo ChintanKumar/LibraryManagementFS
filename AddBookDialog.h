@@ -48,6 +48,7 @@ class AddBookDialog : public wxDialog
 		virtual ~AddBookDialog();
 		bool checkID(int);
 		void addNewBook(Book);
+		// void buildIndex(int);
 		void cancelButtonClick(wxCommandEvent& event);
 		void addButtonClick(wxCommandEvent& event);
 		void idFieldEnter(wxCommandEvent& event);
